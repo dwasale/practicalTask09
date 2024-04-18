@@ -7,19 +7,22 @@ function increment(){
 // and also a counter
 let intervalID;
 let counter = 1;
+let startButton = document.getElementById('start');
+let stopButton = document.getElementById('stop');
 // Stop button is disabled unless start button is pressed
-document.getElementById('stop').disabled = true;
+stopButton.disabled = true;
 
 let startCounter = function() {
     intervalID = setInterval(
         // Create the logic needed in the setInterval() function for
         //incrementing the counter and outputting to the console
         increment, 1000
-    );
+    ); 
     // Disabling the start button after it is pressed
-    document.getElementById('start').disabled = true;
+    startButton.disabled = true;
+    // startButton.disabled = true;
     // Enabling/Stop button is enable once again after start button is pressed
-    document.getElementById('stop').disabled = false;
+    stopButton.disabled = false;
 }
 
 function stopCounter() {
@@ -27,18 +30,24 @@ function stopCounter() {
     // using clearInterval()
     clearInterval(intervalID);
     // Enabling the start button after stop button is pressed
-    document.getElementById('start').disabled = false;
+    startButton.disabled = false;
     // Disabling the stop button unless start button is pressed
-    document.getElementById('stop').disabled = true;
+    stopButton.disabled = true;
 }
-
-let startButton = document.getElementById('start');
-let stopButton = document.getElementById('stop');
 
 // The event listener below is missing a callback function argument;
 // this button should start the outputting of the counter to the console
-startButton.addEventListener("click", startCounter);
-
+try {
+    startButton.addEventListener("click", startCounter);
+}
+catch (err){
+    console.log(err);
+}
 // The event listener below is missing a callback function argument;
 // this button should the counter from outputting to the console
-stopButton.addEventListener("click", stopCounter);
+try {
+    stopButton.addEventListener("click", stopCounter);
+}
+catch (err) {
+    console.log(err);
+}
