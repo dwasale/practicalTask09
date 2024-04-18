@@ -20,6 +20,7 @@ let startCounter = function() {
     ); 
     // Disabling the start button after it is pressed
     startButton.disabled = true;
+      
     // startButton.disabled = true;
     // Enabling/Stop button is enable once again after start button is pressed
     stopButton.disabled = false;
